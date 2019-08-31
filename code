@@ -1,0 +1,19 @@
+function sortByHeight(a) {
+    //creating a map of the array a to sort out through the array minus the -1 (the trees)
+    var trialMaps = a
+    .map((a,b)=>({key:b,value:a}))
+    .filter(a => a.value>0)
+    .sort((a, b) => (a.value > b.value) ? 1 : -1)
+    .map(num=>num.value)
+    ;
+    
+    //for loop utilized in adding the sorted array from the map created into their
+    //respective indexes leaving the -1 (the trees) untouched from the indexes (locations)
+    for(var i = 0,j=0;i<a.length;i++){
+        if(a[i]!=-1){
+            a[i] = trialMaps[j];
+            j++;
+        }
+    }
+   return a;
+}
